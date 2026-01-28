@@ -9,12 +9,18 @@ import {
 } from "react-native";
 
 type ButtonProps = TouchableOpacityProps & {
-  variant: "primary" | "secondary" | "danger";
+  variant?: "primary" | "secondary" | "danger";
   icon?: keyof typeof MaterialIcons.glyphMap;
   text?: string;
 };
 
-export function Button({ variant, icon, text, style, ...rest }: ButtonProps) {
+export function Button({
+  variant = "primary",
+  icon,
+  text,
+  style,
+  ...rest
+}: ButtonProps) {
   return (
     <TouchableOpacity
       style={[

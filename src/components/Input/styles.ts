@@ -11,7 +11,9 @@ export const styles = StyleSheet.create({
     borderColor: colors.gray[300],
     borderRadius: 9999,
     paddingHorizontal: 16,
-    minHeight: 56,
+    minHeight: 48,
+    width: "auto",
+    flex: 1,
   },
   containerFocused: {
     borderColor: colors.purple.base,

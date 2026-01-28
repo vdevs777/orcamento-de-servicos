@@ -1,18 +1,43 @@
-import { Button } from "@/components/Button";
-import { Input } from "@/components/Input";
-import { StatusBadge } from "@/components/StatusBadge";
+// Home.tsx
+import { View } from "react-native";
+import { Header } from "./Header";
+import { Separator } from "@/components/Separator";
 import { colors } from "@/theme/colors";
-import { Text, TextInput, TextInputBase, View } from "react-native";
-import { StyleSheet } from "react-native";
+import { Filters } from "./Filters";
+import { BudgetCard } from "./BudgetCard";
+import BottomSheet from "@gorhom/bottom-sheet";
+import { useRef } from "react";
+import { FilterSheet } from "./FilterSheet";
+import { Status } from "@/types/enums/status";
 
 export function Home() {
+  const filterSheetRef = useRef<BottomSheet>(null);
+
+  const handleOpenFilters = () => {
+    filterSheetRef.current?.expand();
+  };
+
   return (
-    <View style={{ padding: 56 }}>
-      <Text>a</Text>
-      <StatusBadge status="sent" />
-      <StatusBadge status="draft" />
-      <StatusBadge status="approved" />
-      <StatusBadge status="rejected" />
+    <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, gap: 10 }}>
+        <Header />
+        <Separator color={colors.gray[300]} />
+        <View style={{ padding: 20, gap: 20, width: "100%" }}>
+          <Filters onOpenFilters={handleOpenFilters} />
+          {/* TROCAR PARA FLAT LIST POSTERIORMENTE */}
+          <View>
+            <BudgetCard
+              data={{
+                title: "Desenvolvimento de aplicativo de loja online",
+                customer: "Soluções Tecnológicas Beta",
+                value: 22300,
+                status: Status.APPROVED,
+              }}
+            />
+          </View>
+        </View>
+      </View>
+      <FilterSheet ref={filterSheetRef} />
     </View>
   );
 }

@@ -1,6 +1,5 @@
+import "react-native-reanimated";
 import React from "react";
-
-import { Text, TextInput, View } from "react-native";
 
 import {
   useFonts,
@@ -11,6 +10,8 @@ import { Loading } from "@/components/Loading";
 
 import { Routes } from "@/routes";
 
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+
 export default function App() {
   const [isFontLoaded] = useFonts({
     Lato_400Regular,
@@ -20,5 +21,9 @@ export default function App() {
   if (!isFontLoaded) {
     return <Loading />;
   }
-  return <Routes />;
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Routes />
+    </GestureHandlerRootView>
+  );
 }
