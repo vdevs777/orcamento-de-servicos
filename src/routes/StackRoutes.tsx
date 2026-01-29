@@ -23,7 +23,7 @@ export function StackRoutes() {
 
   return (
     <Stack.Navigator
-      initialRouteName="home"
+      initialRouteName="budgetCreate"
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="home" component={Home} />

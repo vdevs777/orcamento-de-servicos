@@ -3,6 +3,7 @@ import { styles } from "./styles";
 import { StatusBadge } from "@/components/StatusBadge";
 import { numberToLocale } from "@/utils/number";
 import { Status } from "@/types/enums/status";
+import { Currency } from "../../../../components/Currency";
 
 type BudgetCardData = {
   title: string;
@@ -25,12 +26,7 @@ export function BudgetCard({ data }: BudgetCardProps) {
       </View>
       <View style={styles.internalContainer}>
         <Text style={styles.customer}>{data.customer}</Text>
-        <View style={styles.valueContainer}>
-          <Text style={styles.currency}>R$</Text>
-          <Text style={styles.value}>
-            {numberToLocale(data.value, { minDecimals: 2 })}
-          </Text>
-        </View>
+        <Currency value={data.value} />
       </View>
     </TouchableOpacity>
   );

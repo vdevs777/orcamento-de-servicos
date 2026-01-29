@@ -1,14 +1,15 @@
 import { ReactNode } from "react";
-import { Pressable, Text, View } from "react-native";
-import { styles } from "./styles";
+import { DimensionValue, Pressable, Text, View, ViewProps } from "react-native";
+import { getStyles } from "./styles";
 
 type RadioGroupItem = {
   label: string | ReactNode;
   value: string;
 };
 
-type RadioGroupProps = {
+type RadioGroupProps = ViewProps & {
   items: RadioGroupItem[];
+  itemWidth?: DimensionValue;
   selectedValue?: string;
   onChange: (value: string) => void;
 };
@@ -17,9 +18,14 @@ export function RadioGroup({
   items,
   selectedValue,
   onChange,
+  style,
+  itemWidth,
+  ...rest
 }: RadioGroupProps) {
+  const styles = getStyles(itemWidth);
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]} {...rest}>
       {items.map((item) => (
         <Pressable
           style={styles.item}

@@ -11,8 +11,9 @@ export const styles = StyleSheet.create({
     borderColor: colors.gray[300],
     borderRadius: 9999,
     paddingHorizontal: 16,
-    minHeight: 48,
+    minHeight: 12,
     width: "auto",
+    height: 48,
     flex: 1,
   },
   containerFocused: {
@@ -39,5 +40,17 @@ export const styles = StyleSheet.create({
     color: colors.gray[700],
     paddingVertical: 0,
     textAlignVertical: "center",
+  },
+  numberText: {
+    textAlign: "center",
+  },
+
+  stepperButton: {
+    width: 32,
+    height: 32,
+    borderRadius: 999,
+    alignItems: "center",
+    justifyContent: "center",
+    color: colors.purple.base,
   },
 });

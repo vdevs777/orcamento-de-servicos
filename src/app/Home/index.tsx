@@ -1,13 +1,13 @@
 // Home.tsx
 import { View } from "react-native";
-import { Header } from "./Header";
+import { Header } from "./components/Header";
 import { Separator } from "@/components/Separator";
 import { colors } from "@/theme/colors";
-import { Filters } from "./Filters";
-import { BudgetCard } from "./BudgetCard";
+import { Filters } from "./components/Filters";
+import { BudgetCard } from "./components/BudgetCard";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { useRef } from "react";
-import { FilterSheet } from "./FilterSheet";
+import { FilterSheet } from "./components/FilterSheet";
 import { Status } from "@/types/enums/status";
 
 export function Home() {

@@ -1,9 +1,17 @@
-import { NavigationContainer } from "@react-navigation/native";
+import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import { StackRoutes } from "./StackRoutes";
+
+export const navigationTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: "white", // cor padrão do app
+  },
+};
 
 export function Routes() {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={navigationTheme}>
       <StackRoutes />
     </NavigationContainer>
   );
