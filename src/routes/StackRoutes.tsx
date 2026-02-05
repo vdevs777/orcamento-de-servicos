@@ -4,6 +4,7 @@ import { BudgetView } from "@/app/Budget/View";
 import { Home } from "@/app/Home";
 import {
   createNativeStackNavigator,
+  NativeStackNavigationProp,
   NativeStackScreenProps,
 } from "@react-navigation/native-stack";
 import { View } from "react-native";
@@ -15,6 +16,9 @@ export type StackRoutesList = {
   budgetEdit: { id: string };
 };
 
+export type StackNavigationProps<T extends keyof StackRoutesList> =
+  NativeStackNavigationProp<StackRoutesList, T>;
+
 export type StackRoutesProps<T extends keyof StackRoutesList> =
   NativeStackScreenProps<StackRoutesList, T>;
 
@@ -23,7 +27,7 @@ export function StackRoutes() {
 
   return (
     <Stack.Navigator
-      initialRouteName="budgetCreate"
+      initialRouteName="home"
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="home" component={Home} />

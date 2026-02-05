@@ -17,18 +17,27 @@ import { colors } from "@/theme/colors";
 import { Currency } from "@/components/Currency";
 import { Input } from "@/components/Input";
 import { Investment } from "./components/Investment";
-import { ServiceSheet } from "./components/ServiceSheet";
+import { ServiceSchema, ServiceSheet } from "./components/ServiceSheet";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { FilterSheet } from "@/app/Home/components/FilterSheet";
+import { ServiceModel } from "@/storage/budget-storage";
+import { v4 as uuid } from "uuid";
 
 export function BudgetCreate() {
   const [selectedStatus, setSelectedStatus] = useState("");
+
+  const [services, setServices] = useState<ServiceModel[]>([]);
 
   const serviceSheetRef = useRef<BottomSheet>(null);
 
   const handleOpenService = () => {
     serviceSheetRef.current?.expand();
   };
+
+  function onAddService(data: ServiceSchema) {
+    setServices((prev) => [...prev, { id: uuid(), ...data }]);
+    console.log(services);
+  }
 
   const status = Object.values(Status).map((status) => ({
     value: status,
@@ -60,7 +69,6 @@ export function BudgetCreate() {
           />
           <IncludedServices onAddService={handleOpenService} />
           <Investment />
-
           <View style={{ height: 120 }} />
         </ScrollView>
 
@@ -69,7 +77,7 @@ export function BudgetCreate() {
           <Button icon="check" text="Salvar" />
         </View>
       </View>
-      <ServiceSheet ref={serviceSheetRef} />
+      <ServiceSheet ref={serviceSheetRef} onSubmit={onAddService} />
     </View>
   );
 }

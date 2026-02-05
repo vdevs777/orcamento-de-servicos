@@ -5,7 +5,11 @@ import { Currency } from "@/components/Currency";
 import { MaterialIcons } from "@expo/vector-icons";
 import { colors } from "@/theme/colors";
 
-export function BudgetServiceCard() {
+export function BudgetServiceCard({
+  editable = false,
+}: {
+  editable?: boolean;
+}) {
   return (
     <View style={styles.container}>
       <View style={styles.titleAndDescriptionContainer}>
@@ -22,9 +26,11 @@ export function BudgetServiceCard() {
           <Currency value={1021.22} />
           <Text style={styles.quantity}>Qt: 1</Text>
         </View>
-        <Pressable>
-          <MaterialIcons name="edit" size={20} color={colors.purple.base} />
-        </Pressable>
+        {editable && (
+          <Pressable>
+            <MaterialIcons name="edit" size={20} color={colors.purple.base} />
+          </Pressable>
+        )}
       </View>
     </View>
   );
